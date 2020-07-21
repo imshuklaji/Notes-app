@@ -21,7 +21,12 @@ yargs.command({
         }
     },
 
-    handler: function (argv) {
+    // handler: function (argv) {
+    //     console.log('Adding a new note...! ');
+    //     notes.addNote(argv.title, argv.body)
+    // }
+
+    handler: (argv) => {
         console.log('Adding a new note...! ');
         notes.addNote(argv.title, argv.body)
     }
@@ -39,19 +44,25 @@ yargs.command({
         }
     },
 
-    handler: function (argv) {
-        console.log('Removing the note'),
-            notes.removeNote(argv.title)
-    }
+    // handler: function (argv) {
+    //     console.log('Removing the note'),
+    //         notes.removeNote(argv.title)
+    // }
 
+    handler: (argv) => { notes.removeNote(argv.title) }
 })
 
 // Create list command
 yargs.command({
     command: 'list',
     describe: 'List your notes',
-    handler: function () {
-        console.log('Listing out all notes')
+    // handler: function () {
+    //     console.log('Listing out all notes')
+    // }
+    //changes done to cater ES6 method definiton
+    handler() {
+        console.log(chalk.green.inverse('Listing out all notes'))
+        notes.listNote()
     }
 })
 
@@ -59,7 +70,12 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'Read a note',
-    handler: function () {
+    // handler: function () {
+    //     console.log('Reading a note')
+    // }
+
+    //changes done to cater ES6 method definiton
+    handler() {
         console.log('Reading a note')
     }
 })

@@ -75,8 +75,9 @@ yargs.command({
     // }
 
     //changes done to cater ES6 method definiton
-    handler() {
+    handler(argv) {
         console.log('Reading a note')
+        notes.readNote(argv.title);
     }
 })
 
